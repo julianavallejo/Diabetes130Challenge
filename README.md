@@ -39,7 +39,21 @@ Given the time constraints and the scope of our current problem, we decided to s
 However, for future work, it would be interesting to go deeper into this issue to better understand the underlying causes, reduce the dimensionality of the problem, and potentially improve the model's performance.
 
 ## Model selection and evaluation:
-As this is a classification problem, we tested three of the most used models in this context. From the simplest to the more complex, we tested logistic regression, decision trees, and random forest. The next sections describe some considerations of the results found.
+As this is a classification problem, we tested three of the most used models in this context. From the simplest to the more complex, we tested logistic regression, decision trees, and random forest. The next sections describe some considerations of the results found. For evaluating the models, we used the following metrics:
+
+- AUC (Area Under the ROC Curve): This metric measures the ability of the model to distinguish between classes. It is particularly useful when dealing with imbalanced datasets, as it considers the trade-off between true positive and false positive rates. A higher AUC indicates a better performance in distinguishing between the positive and negative classes.
+
+- Accuracy: This is the ratio of correctly predicted instances to the total instances. While it provides a general sense of the model's performance, it can be misleading in cases of class imbalance. For example, if the majority class dominates, a high accuracy might simply reflect the model's bias towards the majority class.
+
+- Recall: This metric measures the proportion of actual positives that are correctly identified by the model. In the context of predicting hospital readmissions, recall is critical because it indicates how well the model is at identifying patients who will be readmitted. Missing a readmission (false negative) could have significant consequences, so a higher recall is desirable.
+
+- Precision: This metric measures the proportion of positive predictions that are actually correct. High precision means that when the model predicts a readmission, it is usually correct. This is important to avoid unnecessary interventions based on incorrect predictions.
+
+- F1 Score: This is the harmonic mean of precision and recall, providing a single metric that balances both. It is particularly useful when you need to find an optimal balance between precision and recall, especially in cases where you have an uneven class distribution.
+
+By using these metrics, we can get a comprehensive view of the model's performance from different angles. This approach allows us to make a more informed decision about which model to select for predicting hospital readmissions.
+
+
 ### Logistic regression:
 The selected solver is liblinear because its speed and good performance in large-scale linear classification problems. Besides, it can handle sparse input matrix which is our case. 
 Logistic regression shows consistent performance between training and validation sets. However, it has a low recall, indicating it misses a significant number of true positives. 
