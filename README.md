@@ -55,7 +55,7 @@ By using these metrics, we can get a comprehensive view of the model's performan
 
 
 ### Logistic regression:
-The selected solver is liblinear because its speed and good performance in large-scale linear classification problems. Besides, it can handle sparse input matrix which is our case. 
+The selected solver is _liblinear_ because its speed and good performance in large-scale linear classification problems. Besides, it can handle sparse input matrix which is our case. 
 Logistic regression shows consistent performance between training and validation sets. However, it has a low recall, indicating it misses a significant number of true positives. 
 The precision is moderate, suggesting it is relatively good at predicting true positives when it does make a positive prediction.
 
